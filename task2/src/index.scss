@@ -1,0 +1,255 @@
+@import './style/fonts.scss';
+
+$mainColor: #550DC9;
+$hederHeight: 64px;
+$dashboardWidth: 51px;
+$dashboardHeight: calc(100vh - #{$hederHeight});
+$toDoMarginRight: 10px;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  font-family: 'OpenSans-Regular';
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ul {
+  list-style: none;
+}
+
+#root {
+  height: 100%;
+}
+
+.header {
+  position: relative;
+  height: $hederHeight;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 26px;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 1px 5px 0px rgba(34, 60, 80, 0.2);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    cursor: pointer;
+  }
+
+  &__title {
+    font-family: 'OpenSans-Bold';
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 42px;
+    letter-spacing: 1px;
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+
+  &__user-name {
+    text-align: end;
+  }
+
+  &__user-image {
+    margin: 0 11px 0 8px ;
+  }
+
+  &__dropdown {
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    cursor: pointer;
+  }
+}
+
+.dashboard {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  width: $dashboardWidth;
+  height: 100vh;
+  background-color: $mainColor;
+
+  &__list {
+    width: 100%;
+    padding-top: calc(#{$hederHeight + 24px});
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+    background-color: #440BA0;
+  }
+}
+
+.content {
+  padding-left: $dashboardWidth;
+  display: flex;
+  justify-content: space-between;
+}
+
+.uncompleted {
+  width: 65%;
+  margin: 24px;
+}
+
+.completed {
+  width: 35%;
+  margin: 24px;
+}
+
+.list-title {
+  font-size: 16px;
+  line-height: 22px;
+  margin: 11px 0 8px 0;
+}
+
+.to-do-form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  &__input {
+    border: 1px solid #ECECEC;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px 12px;
+  }
+
+  &__add-btn {
+    color: #fff;
+    line-height: 19px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    background-color: $mainColor;
+    margin-left: 8px;
+    padding: 10.5px 11.5px;
+    cursor: pointer;
+  }
+}
+
+.tag-info {
+  display: inline-block;
+  width: fit-content;
+  border-radius: 4px;
+  padding: 4px;
+  line-height: 16px;
+  font-size: 12px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+
+  &.total-to-do {
+    background-color: #FEF6FF;
+    color: #550DC9;
+  }
+
+  &.uncompleted-to-do {
+    background-color: #F6FCFF;
+    color: #0D9CC9;
+  }
+
+  &.completed-to-do {
+    background-color: #F6FFF9;
+    color: #0DC958;
+  }
+}
+
+.to-do-item {
+  width: 100%;
+  padding: 16px 12px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  &__data {
+    display: flex;
+    align-items: center;
+  }
+
+  &__checkbox {
+    cursor: pointer;
+    margin-right: $toDoMarginRight;
+  }
+
+  &__checkbox:checked {
+    color: $mainColor;
+    accent-color: $mainColor
+  }
+
+  &__name {
+    margin-right: $toDoMarginRight;
+    overflow-wrap: anywhere;
+  }
+
+  &__dashboard {
+    min-width: 90px;
+  }
+
+  &__btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &__btn:not(:last-child) {
+    margin-right: $toDoMarginRight;
+  }
+
+  &__btn_edit {
+    background-image: url('./img/edit.svg');
+  }
+  
+  &__btn_copy {
+    background-image: url('./img/copy.svg');
+  }
+  
+  &__btn_delete {
+    background-image: url('./img/delete.svg');
+  }
+}
+
+.completed .to-do-item__name {
+  color: #A3A3A3;
+  text-decoration: line-through;
+}
+
+@import './style/media.scss';
