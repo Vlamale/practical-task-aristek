@@ -10,7 +10,7 @@ const Header: React.FC = () => {
                 <h1 className="header-left__title">Task</h1>
             </div>
             <div className="header-right">
-                <span className="header-right__user-name">Vlad</span>
+                <span className="header-right__user-name">Leanne Graham</span>
                 <img className="header-right__user-image" src={profile} />
                 <i className="header-right__dropdown"></i>
             </div>

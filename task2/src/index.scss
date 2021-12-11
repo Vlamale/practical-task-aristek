@@ -4,6 +4,7 @@ $mainColor: #550DC9;
 $hederHeight: 64px;
 $dashboardWidth: 51px;
 $dashboardHeight: calc(100vh - #{$hederHeight});
+$toDoMarginRight: 10px;
 
 *,
 *::after,
@@ -38,8 +39,11 @@ ul {
 }
 
 .header {
+  position: relative;
   height: $hederHeight;
   width: 100%;
+  z-index: 1;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,6 +74,10 @@ ul {
   display: flex;
   align-items: center;
 
+  &__user-name {
+    text-align: end;
+  }
+
   &__user-image {
     margin: 0 11px 0 8px ;
   }
@@ -86,14 +94,16 @@ ul {
 }
 
 .dashboard {
-  position: absolute;
+  position: fixed;
+  z-index: 0;
+  top: 0;
   width: $dashboardWidth;
-  height: $dashboardHeight;
+  height: 100vh;
   background-color: $mainColor;
 
   &__list {
     width: 100%;
-    padding-top: 24px;
+    padding-top: calc(#{$hederHeight + 24px});
   }
 
   &__item {
@@ -125,7 +135,7 @@ ul {
 .list-title {
   font-size: 16px;
   line-height: 22px;
-  margin: 16px 0 8px 0;
+  margin: 11px 0 8px 0;
 }
 
 .to-do-form {
@@ -153,13 +163,30 @@ ul {
   }
 }
 
-.total-info {
+.tag-info {
+  display: inline-block;
+  width: fit-content;
   border-radius: 4px;
-  background-color: #FEF6FF;
-  color: #550DC9;
   padding: 4px;
   line-height: 16px;
   font-size: 12px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+
+  &.total-to-do {
+    background-color: #FEF6FF;
+    color: #550DC9;
+  }
+
+  &.uncompleted-to-do {
+    background-color: #F6FCFF;
+    color: #0D9CC9;
+  }
+
+  &.completed-to-do {
+    background-color: #F6FFF9;
+    color: #0DC958;
+  }
 }
 
 .to-do-item {
@@ -171,8 +198,14 @@ ul {
   align-items: center;
   margin-bottom: 16px;
 
+  &__data {
+    display: flex;
+    align-items: center;
+  }
+
   &__checkbox {
     cursor: pointer;
+    margin-right: $toDoMarginRight;
   }
 
   &__checkbox:checked {
@@ -181,7 +214,12 @@ ul {
   }
 
   &__name {
-    margin-left: 8px;
+    margin-right: $toDoMarginRight;
+    overflow-wrap: anywhere;
+  }
+
+  &__dashboard {
+    min-width: 90px;
   }
 
   &__btn {
@@ -190,7 +228,10 @@ ul {
     border: none;
     background-color: #fff;
     cursor: pointer;
-    margin-left: 10px;
+  }
+
+  &__btn:not(:last-child) {
+    margin-right: $toDoMarginRight;
   }
 
   &__btn_edit {
@@ -205,3 +246,10 @@ ul {
     background-image: url('./img/delete.svg');
   }
 }
+
+.completed .to-do-item__name {
+  color: #A3A3A3;
+  text-decoration: line-through;
+}
+
+@import './style/media.scss';

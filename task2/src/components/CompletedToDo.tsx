@@ -1,20 +1,20 @@
 import React from "react"
+import { IToDo } from "../types"
+import ToDo from "./ToDo"
 
-const CompletedToDo: React.FC = () => {
+interface ICompletedToDoProps {
+    toDos: IToDo[]
+}
+
+const CompletedToDo: React.FC<ICompletedToDoProps> = ({toDos}) => {
+    
     return (
         <div className="completed">
-            <h3 className="list-title">Completed (3)</h3>
+            <h3 className="list-title">Completed ({toDos.length})</h3>
 
-            <ul className="to-do-list">
-                <li className="to-do-item">
-                    <input className="to-do-item__checkbox" type="checkbox" />
-                    <span className="to-do-item__name">Add Icon to Dashboard </span>
-
-                    <div className="to-do-item__dashboard">
-                        <button className="to-do-item__btn to-do-item__btn_delete" />
-                    </div>
-                </li>
-            </ul>
+            {toDos.map((toDo) => (
+                <ToDo key={toDo.id} title={toDo.title} completed={toDo.completed} userId={toDo.userId} id={toDo.id} />
+            ))}
         </div>
     )
 }

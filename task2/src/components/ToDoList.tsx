@@ -1,34 +1,40 @@
-import React from "react"
+import React, { useEffect, useReducer, useState } from "react"
+import {ToDoContext, reducer, initialState} from "../context/ToDoContext/ToDoContext"
+import { IProcessedToDoData, IToDo } from "../types"
+import CompletedToDo from "./CompletedToDo"
+import UncompletedToDo from "./UncompletedToDo"
 
 const ToDoList: React.FC = () => {
+    const [uncompletedList, setUncompletedList] = useState<IToDo[]>([])
+    const [completedList, setCompletedList] = useState<IToDo[]>([])
+    const [state, dispatch] = useReducer(reducer, initialState)
+    useEffect(() => {
+        let cleanUpFunction = false
+        if (!cleanUpFunction) {
+            (async function () {
+                const data: IToDo[] = await (await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')).json()
+
+                const processedData: IProcessedToDoData = data.reduce((acc: IProcessedToDoData, item) => {
+
+                    if (item.completed) {
+                        acc.completed.push(item)
+                    } else {
+                        acc.unCompleted.push(item)
+                    }
+                    return acc
+                }, { unCompleted: [], completed: [] })
+                setUncompletedList(processedData.unCompleted);
+                setCompletedList(processedData.completed)
+            })()
+        }
+        return () => { cleanUpFunction = true }
+    }, [])
+
     return (
-        <ul className="to-do-list">
-            <li className="to-do-item">
-                <div className="to-do-item__data">
-                    <input className="to-do-item__checkbox" type="checkbox" />
-                    <span className="to-do-item__name">Add Icon to Dashboard </span>
-                </div>
-
-                <div className="to-do-item__dashboard">
-                    <button className="to-do-item__btn to-do-item__btn_edit" />
-                    <button className="to-do-item__btn to-do-item__btn_copy" />
-                    <button className="to-do-item__btn to-do-item__btn_delete" />
-                </div>
-            </li>
-
-            <li className="to-do-item">
-                <div className="to-do-item__data">
-                    <input className="to-do-item__checkbox" type="checkbox" />
-                    <span className="to-do-item__name">Add Icon to Dashboard </span>
-                </div>
-
-                <div className="to-do-item__dashboard">
-                    <button className="to-do-item__btn to-do-item__btn_edit" />
-                    <button className="to-do-item__btn to-do-item__btn_copy" />
-                    <button className="to-do-item__btn to-do-item__btn_delete" />
-                </div>
-            </li>
-        </ul>
+        <ToDoContext.Provider value={{...state, setUncompletedList, setCompletedList, dispatch}}>
+            <UncompletedToDo toDos={uncompletedList} total={uncompletedList.length + completedList.length} />
+            <CompletedToDo toDos={completedList} />
+        </ToDoContext.Provider>
     )
 }
 

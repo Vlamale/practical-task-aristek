@@ -1,0 +1,37 @@
+$listWidthMedia: calc(100% - #{$dashboardWidth});
+$toDoMarginRightMedia: calc(#{$toDoMarginRight} - 5px);
+
+@media (max-width: 650px) {
+    .content {
+        flex-direction: column;
+        justify-content: none;
+    }
+
+    .uncompleted {
+        width: $listWidthMedia;
+    }
+
+    .completed {
+        width: $listWidthMedia;
+    }
+
+    .to-do-item {
+        padding: 8px 5px;
+
+        &__checkbox {
+            margin-right: $toDoMarginRightMedia;
+          }
+        
+          &__name {
+            margin-right: $toDoMarginRightMedia;
+          }
+
+          &__dashboard {
+              min-width: 70px;
+          }
+
+          &__btn:not(:last-child) {
+            margin-right: $toDoMarginRightMedia;
+          }
+    }
+}

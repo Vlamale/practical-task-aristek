@@ -1,8 +1,7 @@
 import React from "react"
-import CompletedToDo from "../components/CompletedToDo"
 import Dashboard from "../components/Dashboard"
 import Header from "../components/Header"
-import UncompletedToDo from "../components/UncompletedToDo"
+import ToDoList from "../components/ToDoList"
 
 const MainPage: React.FC = () => {
     return (
@@ -10,8 +9,7 @@ const MainPage: React.FC = () => {
             <Header />
             <Dashboard />
             <main className="content">
-                <UncompletedToDo />
-                <CompletedToDo />
+                <ToDoList />
             </main>
         </>
     )
