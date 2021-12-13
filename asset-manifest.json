@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/practical-task-aristek/static/css/main.cfd3486b.chunk.css",
-    "main.js": "/practical-task-aristek/static/js/main.c4cd3ebf.chunk.js",
-    "main.js.map": "/practical-task-aristek/static/js/main.c4cd3ebf.chunk.js.map",
+    "main.js": "/practical-task-aristek/static/js/main.b1649edd.chunk.js",
+    "main.js.map": "/practical-task-aristek/static/js/main.b1649edd.chunk.js.map",
     "runtime-main.js": "/practical-task-aristek/static/js/runtime-main.601568fd.js",
     "runtime-main.js.map": "/practical-task-aristek/static/js/runtime-main.601568fd.js.map",
-    "static/js/2.7e051839.chunk.js": "/practical-task-aristek/static/js/2.7e051839.chunk.js",
-    "static/js/2.7e051839.chunk.js.map": "/practical-task-aristek/static/js/2.7e051839.chunk.js.map",
+    "static/js/2.1f45900a.chunk.js": "/practical-task-aristek/static/js/2.1f45900a.chunk.js",
+    "static/js/2.1f45900a.chunk.js.map": "/practical-task-aristek/static/js/2.1f45900a.chunk.js.map",
     "index.html": "/practical-task-aristek/index.html",
     "static/css/main.cfd3486b.chunk.css.map": "/practical-task-aristek/static/css/main.cfd3486b.chunk.css.map",
-    "static/js/2.7e051839.chunk.js.LICENSE.txt": "/practical-task-aristek/static/js/2.7e051839.chunk.js.LICENSE.txt",
+    "static/js/2.1f45900a.chunk.js.LICENSE.txt": "/practical-task-aristek/static/js/2.1f45900a.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/practical-task-aristek/static/media/edit.f5861864.svg",
     "static/media/logo.43aadb3a.svg": "/practical-task-aristek/static/media/logo.43aadb3a.svg",
     "static/media/profile.b4d247d4.svg": "/practical-task-aristek/static/media/profile.b4d247d4.svg",
@@ -17,8 +17,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.601568fd.js",
-    "static/js/2.7e051839.chunk.js",
+    "static/js/2.1f45900a.chunk.js",
     "static/css/main.cfd3486b.chunk.css",
-    "static/js/main.c4cd3ebf.chunk.js"
+    "static/js/main.b1649edd.chunk.js"
   ]
 }
